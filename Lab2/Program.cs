@@ -18,6 +18,7 @@ namespace Lab2
             name = Console.ReadLine();
 
             bool run = true;
+            bool valid = true;
             int input;
 
             do
@@ -26,10 +27,18 @@ namespace Lab2
                 Console.Clear();
                 Console.WriteLine("Hello " + name + "! \nPlease enter an integer between 1 and 100.");
 
-                while(!int.TryParse(Console.ReadLine(), out input)) {
+                do
+                {
+                    valid = int.TryParse(Console.ReadLine(), out input);
 
-                    Console.WriteLine("Input was invalid " + name + ". Please enter an integer between 1 and 100.");
-                }
+                    if (input < 1 || input > 100)
+                        valid = false;
+
+                    if (valid == false)
+                        Console.Clear();
+                        Console.WriteLine("That input was invalid " + name + ". Please enter an integer between 1 and 100.");
+
+                } while (!valid);
 
                 if (input % 2 == 0) //if statement for even numbers
                 {
