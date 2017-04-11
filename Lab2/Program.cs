@@ -26,8 +26,10 @@ namespace Lab2
                 Console.Clear();
                 Console.WriteLine("Hello " + name + "! \nPlease enter an integer between 1 and 100.");
 
-                input = int.Parse(Console.ReadLine());
-                Console.Clear();
+                while(!int.TryParse(Console.ReadLine(), out input)) {
+
+                    Console.WriteLine("Input was invalid " + name + ". Please enter an integer between 1 and 100.");
+                }
 
                 if (input % 2 == 0) //if statement for even numbers
                 {
@@ -45,14 +47,11 @@ namespace Lab2
                     }
                 }
 
-                else if (input % 2 == 1) //else statement for odd numbers
+                else if(input % 2 == 1) //else statement for odd numbers
                 {
                     Console.WriteLine("Thanks " + name + "! \n" + input + " is odd.");
                 }
-                else //validation
-                {
-                    Console.WriteLine("Input was invalid. Please enter an integer between 1 and 100.");
-                }
+               
 
                 //Prompts user to continue or not
                 Console.WriteLine("\nDo you want to continue?");
@@ -63,7 +62,7 @@ namespace Lab2
                 {
                     run = false;
                     Console.WriteLine("Thanks for stopping by " + name + "!");
-                    Thread.Sleep(3000);
+                    Thread.Sleep(1000);
                 }
 
 
