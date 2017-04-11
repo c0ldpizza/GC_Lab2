@@ -21,9 +21,7 @@ namespace Lab2
 
             int input;
             input = int.Parse(Console.ReadLine());
-
-            string output;
-
+            
             if ( input % 2 == 0) //if statement for even numbers
             {
                 if (input <= 25)
@@ -34,15 +32,19 @@ namespace Lab2
                 {
                     Console.WriteLine("Thanks " + name + "! \n" + input + " is even.");
                 }
+                else
+                {
+                    Console.WriteLine("Thanks " + name + "! \nThat number is even.");
+                }
             }
             
             else if ( input % 2 == 1) //else statement for odd numbers
             {
-
+                Console.WriteLine("Thanks " + name + "! \n" + input + " is odd.");
             }
             else //error?
             {
-
+                Console.WriteLine("Input was invalid. Please enter an integer between 1 and 100.");
             }
         }
     }
