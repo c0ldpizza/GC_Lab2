@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Lab2
@@ -16,36 +17,58 @@ namespace Lab2
             string name;
             name = Console.ReadLine();
 
-            Console.Clear();
-            Console.WriteLine("Hello " + name + "! \nPlease enter an integer between 1 and 100.");
-
+            bool run = true;
             int input;
-            input = int.Parse(Console.ReadLine());
-            
-            if ( input % 2 == 0) //if statement for even numbers
+
+            do
             {
-                if (input <= 25)
+
+                Console.Clear();
+                Console.WriteLine("Hello " + name + "! \nPlease enter an integer between 1 and 100.");
+
+                input = int.Parse(Console.ReadLine());
+                Console.Clear();
+
+                if (input % 2 == 0) //if statement for even numbers
                 {
-                    Console.WriteLine("Thanks " + name + "! \nThat number is even and less than 25");
+                    if (input <= 25)
+                    {
+                        Console.WriteLine("Thanks " + name + "! \nThat number is even and less than 25");
+                    }
+                    else if (input > 60)
+                    {
+                        Console.WriteLine("Thanks " + name + "! \n" + input + " is even.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Thanks " + name + "! \nThat number is even.");
+                    }
                 }
-                else if (input > 60)
+
+                else if (input % 2 == 1) //else statement for odd numbers
                 {
-                    Console.WriteLine("Thanks " + name + "! \n" + input + " is even.");
+                    Console.WriteLine("Thanks " + name + "! \n" + input + " is odd.");
                 }
-                else
+                else //validation
                 {
-                    Console.WriteLine("Thanks " + name + "! \nThat number is even.");
+                    Console.WriteLine("Input was invalid. Please enter an integer between 1 and 100.");
                 }
-            }
-            
-            else if ( input % 2 == 1) //else statement for odd numbers
-            {
-                Console.WriteLine("Thanks " + name + "! \n" + input + " is odd.");
-            }
-            else //error?
-            {
-                Console.WriteLine("Input was invalid. Please enter an integer between 1 and 100.");
-            }
+
+                //Prompts user to continue or not
+                Console.WriteLine("\nDo you want to continue?");
+
+                string cont = Console.ReadLine();
+
+                if (cont.ToLower() == "no" || cont.ToLower() == "n")
+                {
+                    run = false;
+                    Console.WriteLine("Thanks for stopping by " + name + "!");
+                    Thread.Sleep(3000);
+                }
+
+
+            } while (run);
+
         }
     }
 }
