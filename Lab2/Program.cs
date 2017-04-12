@@ -27,6 +27,7 @@ namespace Lab2
                 Console.Clear();
                 Console.WriteLine("Hello " + name + "! \nPlease enter an integer between 1 and 100.");
 
+                //input validation
                 do
                 {
                     valid = int.TryParse(Console.ReadLine(), out input);
@@ -35,8 +36,11 @@ namespace Lab2
                         valid = false;
 
                     if (valid == false)
+                    {
                         Console.Clear();
                         Console.WriteLine("That input was invalid " + name + ". Please enter an integer between 1 and 100.");
+                    }
+                        
 
                 } while (!valid);
 
@@ -56,7 +60,7 @@ namespace Lab2
                     }
                 }
 
-                else if(input % 2 == 1) //else statement for odd numbers
+                else //else statement for odd numbers
                 {
                     Console.WriteLine("Thanks " + name + "! \n" + input + " is odd.");
                 }
